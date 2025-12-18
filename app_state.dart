@@ -11,18 +11,13 @@ Future<void> loadClient(String clientName) async {
     List<String> keys = _getFromEnv("API_KEY");
     List<String> models = _getFromEnv("MODEL");
 
-    final firstModel = models.removeAt(0);
-    final firstKey = keys.removeAt(0);
-
     _client = Client(
       clientName: clientName,
-      firstModel: firstModel,
       fallbackModels: models,
       fallbackApiKeys: keys,
-      apiKey: firstKey
     );
+    
     _currentClient = clientName;
-
     _isReady = true;
     setResponse("Client $clientName prêt");
 
