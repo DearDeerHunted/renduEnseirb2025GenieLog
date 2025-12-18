@@ -6,20 +6,10 @@ Future<void> loadClient(String clientName) async {
 
   try {
 
-    // List of AI models to try
-    List<String> models = ["gemini-2.5-flash", "gemini-2.5-flash-lite"].toList();
-    
-    // Read API keys from .env
+    // Read AI models and API keys from .env
     // add your api keys in the .env file in root (API_KEY_X=...)
-    final seenKeys = <String>{};
-    List<String> keys = dotenv.env.entries
-      .where((entry) => entry.key.startsWith("API_KEY"))
-      .map((entry) => entry.value)
-      .where((value) => value.isNotEmpty && seenKeys.add(value))
-      .toList();
-    if (keys.isEmpty) {
-      throw Exception("API_KEY manquante dans .env");
-    }
+    List<String> keys = _getFromEnv("API_KEY");
+    List<String> models = _getFromEnv("MODEL");
 
     _server = await createMcpServer();
     String systemPrompt = await getSystemPrompt(clientName);
@@ -50,6 +40,19 @@ Future<void> loadClient(String clientName) async {
     setResponse("Erreur lors du chargement du client");
     log.warning("$e");
   }
+}
+
+List<String> _getFromEnv(String prefix) {
+  final uniqueValues = <String>{};
+  List<String> results = dotenv.env.entries
+    .where((entry) => entry.key.startsWith(prefix))
+    .map((entry) => entry.value)
+    .where((value) => value.isNotEmpty && uniqueValues.add(value))
+    .toList();
+  if (results.isEmpty) {
+    throw Exception("$prefix manquante dans .env");
+  }
+  return results;
 }
 
 Future<String> getSystemPrompt(String clientName) async {
