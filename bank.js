@@ -10,6 +10,10 @@ const bank = {
     transfer(accountId, amount);
     bankDAO.debitAccount(accountId, amount);
   }
+
+  transferMoney(accountId, amount) {
+    transfer(accoundId, amount);
+  }
 };
 
 module.exports = bank;
