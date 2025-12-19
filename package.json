@@ -1,0 +1,24 @@
+{
+  "name": "renduenseirb2025genielog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DearDeerHunted/renduEnseirb2025GenieLog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DearDeerHunted/renduEnseirb2025GenieLog/issues"
+  },
+  "homepage": "https://github.com/DearDeerHunted/renduEnseirb2025GenieLog#readme",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}
