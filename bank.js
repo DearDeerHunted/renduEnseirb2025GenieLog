@@ -8,6 +8,7 @@ const bank = {
 
   transferMoney(accountId, amount) {
     transfer(accountId, amount);
+    bankDAO.debitAccount(accountId, amount);
   }
 };
 
