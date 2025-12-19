@@ -29,3 +29,9 @@ test('le mot de passe avec nombre minimal de lettre paramétrable', () => {
   expect(checkPWD('password1', {minLen: 8, minLet: 1, minNum: 2})).toBe(false);
   expect(checkPWD('password', {minLen: 8, minLet: 1, minNum: 0})).toBe(true);
 });
+
+test('le mot de passe avec nouvelle règle (caractère spe)', () => {
+    const speCarac = pwd => /[!@#$%^&*]/.test(pwd);
+  expect(checkPWD('abcd1234', {minLen: 8, minLet: 1, minNum: 1, newRules: [speCarac]})).toBe(false);
+  expect(checkPWD('abcd1234!', {minLen: 8, minLet: 1, minNum: 1, newRules: [speCarac]})).toBe(true);
+});
