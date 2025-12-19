@@ -5,9 +5,21 @@ jest.mock('./bankDAO', () => ({
 const bankDAO = require('./bankDAO');
 const bank = require('./bank');
 
-test('getBalance appelle retrieveBalance sans exécuter son implémentation', () => {
-  bank.getBalance();
+test("getBalance appelle retrieveBalance sans l'exécuter", () => {
+    bank.getBalance('XYZ987');
 
-  expect(bankDAO.retrieveBalance).toHaveBeenCalled();
-  expect(bankDAO.retrieveBalance).toHaveBeenCalledTimes(1);
+    expect(bankDAO.retrieveBalance).toHaveBeenCalled();
+});
+
+test("getBalance transmet accountId à retrieveBalance", () => {
+    bank.getBalance('XYZ987');
+
+    expect(bankDAO.retrieveBalance).toHaveBeenCalledWith('XYZ987');
+});
+
+test("getBalance retourne le solde", () => {
+    bankDAO.retrieveBalance.mockReturnValue(2500);
+    const result = bank.getBalance('XYZ987');
+
+    expect(result).toBe(2500);
 });
