@@ -1,5 +1,5 @@
 function checkPWD(pwd) {
-    return false;
+    return pwd.length >= 8;
 }
 
 module.exports = checkPWD;
