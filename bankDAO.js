@@ -1,6 +1,6 @@
 const bankDAO = {
-  retrieveBalance() {
-    console.log("Retrieve balance");
+  retrieveBalance(accountId) {
+    console.log(`Retrieve balance for account ${accountId}`);
   }
 };
 

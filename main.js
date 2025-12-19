@@ -1,3 +1,3 @@
 const bank = require("./bank");
 
-bank.getBalance();
+bank.getBalance("XYZ987");
