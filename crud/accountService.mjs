@@ -23,5 +23,7 @@ export const accountService = {
       return null;
     }
   },
-  getAccount(id) {},
+  getAccount(id) {
+    return accountDAO.retrieveAccount(id);
+  },
 };
