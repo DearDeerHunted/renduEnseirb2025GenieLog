@@ -9,7 +9,7 @@ export const accountDAO = {
     return ACCOUNT_LIST.map(({ creationDate, ...accountWithoutDate }) => accountWithoutDate);
   },
   restoreAccount(id){
-    const account =ACCOUNT_LIST.find(a => a.id === id);
+    const account = ACCOUNT_LIST.find(a => a.id === id);
     return new Account(account.id, account.lastName, account.firstName, account.creationDate);
   },
   updateAccount(account) {
@@ -23,5 +23,18 @@ export const accountDAO = {
     }
     console.table(ACCOUNT_LIST)
   },
-  retrieveAccount(id) {},
+  retrieveAccount(id) {
+    const account = ACCOUNT_LIST.find(a => a.id === id);
+    if (account) {
+      return {
+        id: account.id,
+        name: `${account.lastName} ${account.firstName}`,
+        creationDate: account.creationDate
+      };
+    }
+    else {
+      console.log("retrieveAccount: no account with this id")
+      return null;
+    }
+  },
 };
