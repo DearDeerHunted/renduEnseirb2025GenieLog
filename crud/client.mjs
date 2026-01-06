@@ -10,4 +10,8 @@ for (const account of accountService.getAccountList())
 
 console.log("saveAccount")
 const altAccount = accountService.saveAccount(newAccount.id, 'A','G')
-    console.log(altAccount)
+console.log(altAccount)
+
+console.log("getAccount")
+const account = accountService.getAccount(newAccount.id)
+console.log(account)
