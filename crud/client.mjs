@@ -7,3 +7,7 @@ console.log(newAccount)
 console.log("getAccountList")
 for (const account of accountService.getAccountList())
     console.log(account)
+
+console.log("saveAccount")
+const altAccount = accountService.saveAccount(newAccount.id, 'A','G')
+    console.log(altAccount)
