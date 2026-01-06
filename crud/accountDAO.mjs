@@ -7,6 +7,16 @@ export const accountDAO = {
   retrieveAccountList() {
     return ACCOUNT_LIST.map(({ creationDate, ...accountWithoutDate }) => accountWithoutDate);
   },
-  updateAccount(account) {},
+  updateAccount(account) {
+    const index = ACCOUNT_LIST.findIndex((a) => a.id === account.id);
+    if (index != -1) {
+      account.creationDate = ACCOUNT_LIST[index].creationDate;
+      ACCOUNT_LIST[index] = account;
+    }
+    else {
+      console.log("updateAccount: no account with this id")
+    }
+    console.table(ACCOUNT_LIST)
+  },
   retrieveAccount(id) {},
 };
