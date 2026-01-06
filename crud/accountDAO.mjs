@@ -1,4 +1,5 @@
 import { ACCOUNT_LIST } from "./database.mjs";
+import { Account } from "./account.mjs";
 
 export const accountDAO = {
   insertAccount(account) {
@@ -6,6 +7,10 @@ export const accountDAO = {
   },
   retrieveAccountList() {
     return ACCOUNT_LIST.map(({ creationDate, ...accountWithoutDate }) => accountWithoutDate);
+  },
+  restoreAccount(id){
+    const account =ACCOUNT_LIST.find(a => a.id === id);
+    return new Account(account.id, account.lastName, account.firstName, account.creationDate);
   },
   updateAccount(account) {
     const index = ACCOUNT_LIST.findIndex((a) => a.id === account.id);
