@@ -1,10 +1,16 @@
 import { Account } from "./account.mjs";
 import { accountCommandDAO } from "./accountCommandDAO.mjs";
+import { accountSummaryList } from "./queryDatabase.mjs";
 
 export const accountCommand = {
     addAccount(lastName, firstName) {
         const newAccount = new Account(undefined, lastName, firstName);
         accountCommandDAO.insertAccount(newAccount);
+        accountSummaryList.push({
+            id: newAccount.id,
+            lastName: newAccount.lastName,
+            firstName: newAccount.firstName
+        });
         return newAccount;
     },
     saveAccount(id, lastName, firstName) {
