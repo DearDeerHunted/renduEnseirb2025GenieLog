@@ -2,11 +2,16 @@ import { Account } from "./account.mjs";
 import { accountCommandDAO } from "./accountCommandDAO.mjs";
 import { accountSummaryList } from "./queryDatabase.mjs";
 import { accountCache } from "./cache.mjs";
+import { Event } from "./event.mjs";
+import { addEvent } from "./eventStore.mjs";
 
 export const accountCommand = {
     addAccount(lastName, firstName) {
         const newAccount = new Account(undefined, lastName, firstName);
-        accountCommandDAO.insertAccount(newAccount);
+
+        const event = new Event("accountAdded", newAccount.id, newAccount);
+        addEvent(event);
+
         accountSummaryList.push({
             id: newAccount.id,
             lastName: newAccount.lastName,
@@ -17,6 +22,7 @@ export const accountCommand = {
             name: `${newAccount.lastName} ${newAccount.firstName}`,
             creationDate: newAccount.creationDate
         };
+        
         return newAccount;
     },
     saveAccount(id, lastName, firstName) {
