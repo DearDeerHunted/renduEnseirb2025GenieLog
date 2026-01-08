@@ -1,6 +1,7 @@
 import { Account } from "./account.mjs";
 import { accountCommandDAO } from "./accountCommandDAO.mjs";
 import { accountSummaryList } from "./queryDatabase.mjs";
+import { accountCache } from "./cache.mjs";
 
 export const accountCommand = {
     addAccount(lastName, firstName) {
@@ -11,6 +12,11 @@ export const accountCommand = {
             lastName: newAccount.lastName,
             firstName: newAccount.firstName
         });
+        accountCache[newAccount.id] = {
+            id: newAccount.id,
+            name: `${newAccount.lastName} ${newAccount.firstName}`,
+            creationDate: newAccount.creationDate
+        };
         return newAccount;
     },
     saveAccount(id, lastName, firstName) {
