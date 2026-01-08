@@ -1,12 +1,16 @@
 import { ACCOUNT_LIST } from "./database.mjs";
 import { Account } from "./account.mjs";
+import { eventList } from "./eventStore.mjs";
 
 export const accountCommandDAO = {
     insertAccount(account) {
         ACCOUNT_LIST.push(account);
     },
     restoreAccount(id){
-        const account = ACCOUNT_LIST.find(a => a.id === id);
+        const creationEvent = eventList.find(e => e.name === 'accountAdded' && e.accountId === id);
+        if (!creationEvent) return null;
+
+        const account = creationEvent.payload;
         return new Account(account.id, account.lastName, account.firstName, account.creationDate);
     },
     updateAccount(account) {
