@@ -1,5 +1,6 @@
 import { accountSummaryList } from "./queryDatabase.mjs";
 import { accountCache } from "./cache.mjs";
+import { eventList } from "./eventStore.mjs";
 
 export const accountQueryDAO = {
     retrieveAccountList() {
@@ -15,4 +16,7 @@ export const accountQueryDAO = {
           return null;
         }
     },
+    retrieveEventList() {
+        return eventList;
+    }
 };

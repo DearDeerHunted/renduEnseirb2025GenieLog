@@ -16,3 +16,7 @@ console.log(altAccount)
 console.log("getAccount")
 const account = accountQuery.getAccount(newAccount.id)
 console.log(account)
+
+console.log("getEvents")
+for (const event of accountQuery.getEvents())
+    console.log(event)
