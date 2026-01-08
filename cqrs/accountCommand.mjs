@@ -29,6 +29,11 @@ export const accountCommand = {
             if (index !== -1) {
                 accountSummaryList[index] = { id, lastName, firstName };
             }
+            accountCache[id] = {
+                id: id,
+                name: `${lastName} ${firstName}`,
+                creationDate: account.creationDate
+            };
             return account;
         }
         else {
