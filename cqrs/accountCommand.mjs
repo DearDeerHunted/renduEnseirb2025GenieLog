@@ -19,6 +19,10 @@ export const accountCommand = {
             account.lastName = lastName;
             account.firstName = firstName;
             accountCommandDAO.updateAccount(account);
+            const index = accountSummaryList.findIndex(a => a.id === id);
+            if (index !== -1) {
+                accountSummaryList[index] = { id, lastName, firstName };
+            }
             return account;
         }
         else {
