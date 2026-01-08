@@ -30,7 +30,7 @@ export const accountCommand = {
         if (account) {
             account.lastName = lastName;
             account.firstName = firstName;
-            accountCommandDAO.updateAccount(account);
+            addEvent(new Event("accountUpdated", id, { lastName, firstName }));
             const index = accountSummaryList.findIndex(a => a.id === id);
             if (index !== -1) {
                 accountSummaryList[index] = { id, lastName, firstName };
