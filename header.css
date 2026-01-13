@@ -3,6 +3,6 @@ header {
     border: var(--main-border);
     font-size: clamp(20px, 48px, 80px);
     padding: var(--space-md);
-    text-align: left;
+    text-align: start;
     height: 10rem;
 }
