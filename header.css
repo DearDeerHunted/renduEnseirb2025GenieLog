@@ -4,4 +4,5 @@ header {
     font-size: clamp(20px, 48px, 80px);
     padding: var(--space-md);
     text-align: left;
+    height: 10rem;
 }
