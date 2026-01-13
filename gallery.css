@@ -1,6 +1,7 @@
 .gallery {
     display: flex;
     flex-wrap: wrap;
+    gap: var(--space-lg);
 
     & img {
         border: 8px solid black;
