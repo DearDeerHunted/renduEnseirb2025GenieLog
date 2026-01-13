@@ -1,6 +1,6 @@
 header {
-    color: green;
-    border: 2px solid crimson;
+    color: var(--main-color);
+    border: var(--main-border);
     font-size: clamp(20px, 48px, 80px);
     padding: var(--space-md);
     text-align: left;

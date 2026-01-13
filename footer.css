@@ -1,6 +1,6 @@
 footer {
-    color: green;
-    border: 2px solid crimson;
+    color: var(--main-color);
+    border: var(--main-border);
     font-size: 12px;
     padding: var(--space-sm);
 }
