@@ -1,5 +1,5 @@
 header {
     color: green;
     border: 2px solid crimson;
-    font-size: 48px;
+    font-size: clamp(20px, 48px, 80px);
 }
